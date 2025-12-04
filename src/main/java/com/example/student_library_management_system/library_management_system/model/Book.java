@@ -11,6 +11,7 @@ import java.util.List;
 public class Book {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
 
@@ -24,7 +25,7 @@ public class Book {
     private boolean availability;
 
     @Column(name = "pages" , nullable = false)
-    public int pages;
+    private int pages;
 
     //book and card connection
     @ManyToOne

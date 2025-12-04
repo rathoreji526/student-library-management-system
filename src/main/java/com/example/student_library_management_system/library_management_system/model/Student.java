@@ -11,16 +11,17 @@ import lombok.Data;
 public class Student {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
 
     @Column(name = "name" , nullable = false)
     private String name;
 
-    @Column(name = "email" , nullable = false)
+    @Column(name = "email" , nullable = false , unique = true)
     private String email;
 
-    @Column(name = "mobile" ,nullable = false)
+    @Column(name = "mobile" ,nullable = false , unique = true)
     private String mobile;
 
     @Column(name = "dept" , nullable = false)
@@ -30,8 +31,7 @@ public class Student {
     private String sem;
 
     @Column(name = "gender",nullable = false)
-    @Enumerated(value = EnumType.STRING)
-    private Gender gender;
+    private String gender;
 
     @Column(name = "address" , nullable = false)
     private String address;
@@ -39,6 +39,7 @@ public class Student {
     @Column(name = "dob" , nullable = false)
     private String dob;
 
+    //connection of student and card
     @OneToOne(mappedBy = "student" , cascade = CascadeType.ALL)
     private Card card;
 
