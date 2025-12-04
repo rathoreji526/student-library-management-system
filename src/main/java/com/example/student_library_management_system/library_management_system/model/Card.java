@@ -1,6 +1,8 @@
 package com.example.student_library_management_system.library_management_system.model;
 
 import com.example.student_library_management_system.library_management_system.enums.CardStatus;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Generated;
@@ -34,11 +36,14 @@ public class Card {
     @CreationTimestamp
     private Date updatedDate;
 
+    //card and student connection
     @OneToOne
     @JoinColumn
+    @JsonBackReference
     private Student student;
 
     //card and transaction connection
+
     @OneToMany(mappedBy = "card")
     private List<Transaction> transactionList;
 

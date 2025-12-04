@@ -2,6 +2,8 @@ package com.example.student_library_management_system.library_management_system.
 
 
 import com.example.student_library_management_system.library_management_system.enums.Gender;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -40,6 +42,7 @@ public class Student {
     private String dob;
 
     //connection of student and card
+    @JsonManagedReference
     @OneToOne(mappedBy = "student" , cascade = CascadeType.ALL)
     private Card card;
 
